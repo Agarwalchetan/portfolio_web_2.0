@@ -70,9 +70,11 @@ const ChatBox: React.FC = () => {
       setNewMessage('');
       setIsTyping(true);
 
-      // Simulate bot thinking and typing with variable delay based on response length
+      // Generate response before setTimeout to ensure it's in scope
+      const response = generateResponse(userMessage);
+      
+      // Now response is in scope for the delay calculation
       setTimeout(() => {
-        const response = generateResponse(userMessage);
         setMessages(prev => [...prev, { text: response, sender: 'bot' }]);
         setIsTyping(false);
       }, Math.min(1000 + response.length * 10, 3000)); // Dynamic delay based on response length

@@ -20,20 +20,47 @@ const ChatBox: React.FC = () => {
   }, [messages]);
 
   const generateResponse = (userMessage: string): string => {
-    const responses = {
-      project: "I'd be happy to discuss my projects! I've worked on various web applications using React, Node.js, and other modern technologies. Which area interests you the most?",
-      skill: "My technical skills include React, TypeScript, Node.js, AWS, and more. I'm particularly experienced in building scalable web applications.",
-      contact: "You can reach me through email at contact@example.com or connect with me on LinkedIn. Would you like me to share the links?",
-      experience: "I have over 5 years of experience in full-stack development, with a focus on React and Node.js. I've worked on various projects from e-commerce to real-time analytics systems.",
-      default: "Thanks for your message! I'll make sure to pass this along to Chetan. Is there anything specific you'd like to know about his work or experience?"
-    };
+    const lowerMessage = userMessage.toLowerCase();
+    
+    // Project-related responses
+    if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
+      if (lowerMessage.includes('recent')) {
+        return "My most recent project is an E-commerce Dashboard built with React and Node.js. It features real-time analytics, inventory management, and a responsive admin interface. Would you like to know more about its technical details?";
+      }
+      if (lowerMessage.includes('favorite') || lowerMessage.includes('best')) {
+        return "One of my favorite projects is the 2D Platformer Game. I built it using Java and LibGDX, implementing custom physics, particle effects, and procedurally generated levels. It was a great learning experience in game development!";
+      }
+      return "I've worked on various projects including web applications, games, and APIs. Some highlights include an E-commerce Dashboard, 2D Platformer Game, and a Task Management API. Which area interests you the most?";
+    }
 
-    const message = userMessage.toLowerCase();
-    if (message.includes('project')) return responses.project;
-    if (message.includes('skill') || message.includes('technology')) return responses.skill;
-    if (message.includes('contact') || message.includes('reach')) return responses.contact;
-    if (message.includes('experience') || message.includes('work')) return responses.experience;
-    return responses.default;
+    // Skills and technology responses
+    if (lowerMessage.includes('skill') || lowerMessage.includes('tech') || lowerMessage.includes('language')) {
+      if (lowerMessage.includes('frontend') || lowerMessage.includes('front-end')) {
+        return "For frontend development, I'm proficient in React, TypeScript, and modern CSS frameworks like Tailwind. I also have experience with Next.js and state management solutions like Redux and Zustand.";
+      }
+      if (lowerMessage.includes('backend') || lowerMessage.includes('back-end')) {
+        return "My backend stack includes Node.js, Express, and various databases like MongoDB and PostgreSQL. I'm also experienced with AWS services and microservices architecture.";
+      }
+      return "I'm skilled in full-stack development with expertise in React, Node.js, TypeScript, and cloud technologies. I also have experience with DevOps tools like Docker and Kubernetes. What specific technology would you like to know more about?";
+    }
+
+    // Experience and background
+    if (lowerMessage.includes('experience') || lowerMessage.includes('background')) {
+      return "I have over 5 years of experience in software development, specializing in full-stack web development. I've worked with startups and large enterprises, leading teams and delivering scalable solutions. Would you like to know about any specific aspect of my experience?";
+    }
+
+    // Contact and availability
+    if (lowerMessage.includes('contact') || lowerMessage.includes('hire') || lowerMessage.includes('available')) {
+      return "You can reach me through email at contact@example.com or connect with me on LinkedIn. I'm currently open to interesting project opportunities and collaborations. Would you like my direct contact information?";
+    }
+
+    // Education and certifications
+    if (lowerMessage.includes('education') || lowerMessage.includes('certificate') || lowerMessage.includes('degree')) {
+      return "I hold a degree in Computer Science and several professional certifications including AWS Solutions Architect and React certification from Meta. I'm constantly learning and updating my skills through online courses and practical projects.";
+    }
+
+    // Default response for other queries
+    return "Thanks for your interest! I'd be happy to discuss more about my work, skills, or experience. Could you please be more specific about what you'd like to know?";
   };
 
   const handleSend = () => {
@@ -43,12 +70,12 @@ const ChatBox: React.FC = () => {
       setNewMessage('');
       setIsTyping(true);
 
-      // Simulate bot thinking and typing
+      // Simulate bot thinking and typing with variable delay based on response length
       setTimeout(() => {
         const response = generateResponse(userMessage);
         setMessages(prev => [...prev, { text: response, sender: 'bot' }]);
         setIsTyping(false);
-      }, 1500);
+      }, Math.min(1000 + response.length * 10, 3000)); // Dynamic delay based on response length
     }
   };
 

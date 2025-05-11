@@ -22,45 +22,53 @@ const ChatBox: React.FC = () => {
   const generateResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase();
     
-    // Project-related responses
+    // About Me
+    if (lowerMessage.includes('who are you') || lowerMessage.includes('about you')) {
+      return "I'm Chetan Agarwal, a Computer Science student at MAIT, Delhi. I'm passionate about software engineering and game development. I've worked on front-end projects and have a strong foundation in C++ and Java.";
+    }
+
+    // Current Work
+    if (lowerMessage.includes('current') || lowerMessage.includes('working on')) {
+      return "I'm currently developing web applications using React and exploring game development. I'm also working on improving my portfolio with new projects and learning cloud technologies.";
+    }
+
+    // Projects
     if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
-      if (lowerMessage.includes('recent')) {
-        return "My most recent project is an E-commerce Dashboard built with React and Node.js. It features real-time analytics, inventory management, and a responsive admin interface. Would you like to know more about its technical details?";
-      }
-      if (lowerMessage.includes('favorite') || lowerMessage.includes('best')) {
-        return "One of my favorite projects is the 2D Platformer Game. I built it using Java and LibGDX, implementing custom physics, particle effects, and procedurally generated levels. It was a great learning experience in game development!";
-      }
-      return "I've worked on various projects including web applications, games, and APIs. Some highlights include an E-commerce Dashboard, 2D Platformer Game, and a Task Management API. Which area interests you the most?";
+      return "I've worked on several exciting projects including:\n• Apple Website Clone (React, TypeScript)\n• E-Commerce Dashboard (MERN Stack)\n• 2D Platformer Game (Java)\n\nWould you like to know more about any specific project?";
     }
 
-    // Skills and technology responses
-    if (lowerMessage.includes('skill') || lowerMessage.includes('tech') || lowerMessage.includes('language')) {
-      if (lowerMessage.includes('frontend') || lowerMessage.includes('front-end')) {
-        return "For frontend development, I'm proficient in React, TypeScript, and modern CSS frameworks like Tailwind. I also have experience with Next.js and state management solutions like Redux and Zustand.";
-      }
-      if (lowerMessage.includes('backend') || lowerMessage.includes('back-end')) {
-        return "My backend stack includes Node.js, Express, and various databases like MongoDB and PostgreSQL. I'm also experienced with AWS services and microservices architecture.";
-      }
-      return "I'm skilled in full-stack development with expertise in React, Node.js, TypeScript, and cloud technologies. I also have experience with DevOps tools like Docker and Kubernetes. What specific technology would you like to know more about?";
+    // Skills
+    if (lowerMessage.includes('skill') || lowerMessage.includes('technology') || lowerMessage.includes('tech stack')) {
+      return "My technical skills include:\n• Frontend: React, TypeScript, Tailwind CSS\n• Backend: Node.js, Express, MongoDB\n• Languages: JavaScript, Java, C++\n• Tools: Git, Docker, AWS\n\nI'm always learning and expanding my skillset!";
     }
 
-    // Experience and background
-    if (lowerMessage.includes('experience') || lowerMessage.includes('background')) {
-      return "I have over 5 years of experience in software development, specializing in full-stack web development. I've worked with startups and large enterprises, leading teams and delivering scalable solutions. Would you like to know about any specific aspect of my experience?";
+    // Contact Information
+    if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
+      return "You can reach me through:\n• Email: contact@example.com\n• LinkedIn: linkedin.com/in/chetan\n• GitHub: github.com/chetan\n\nFeel free to connect!";
     }
 
-    // Contact and availability
-    if (lowerMessage.includes('contact') || lowerMessage.includes('hire') || lowerMessage.includes('available')) {
-      return "You can reach me through email at contact@example.com or connect with me on LinkedIn. I'm currently open to interesting project opportunities and collaborations. Would you like my direct contact information?";
+    // Education
+    if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('college')) {
+      return "I'm pursuing Computer Science at MAIT, Delhi. I've completed several certifications in web development and cloud computing. I'm passionate about continuous learning and staying updated with the latest technologies.";
     }
 
-    // Education and certifications
-    if (lowerMessage.includes('education') || lowerMessage.includes('certificate') || lowerMessage.includes('degree')) {
-      return "I hold a degree in Computer Science and several professional certifications including AWS Solutions Architect and React certification from Meta. I'm constantly learning and updating my skills through online courses and practical projects.";
+    // Experience
+    if (lowerMessage.includes('experience') || lowerMessage.includes('work experience')) {
+      return "I have experience in:\n• Full-stack web development\n• Game development\n• Open source contributions\n• Technical writing\n\nI'm always looking for new opportunities to grow and learn!";
+    }
+
+    // Certifications
+    if (lowerMessage.includes('certification') || lowerMessage.includes('certificate')) {
+      return "I've earned several certifications including:\n• React - The Complete Guide (Udemy)\n• Advanced JavaScript Concepts (Coursera)\n• Data Structures and Algorithms (Educative)\n• Web Development Bootcamp (Codeacademy)";
+    }
+
+    // Achievements
+    if (lowerMessage.includes('achievement') || lowerMessage.includes('award')) {
+      return "Some of my notable achievements include:\n• JEE Advanced Qualification\n• Hackathon Winner\n• Open Source Contributions\n• Technical Writing Recognition";
     }
 
     // Default response for other queries
-    return "Thanks for your interest! I'd be happy to discuss more about my work, skills, or experience. Could you please be more specific about what you'd like to know?";
+    return "Thanks for your interest! I can tell you about my projects, skills, experience, or how to get in touch. What would you like to know more about?";
   };
 
   const handleSend = () => {
@@ -70,14 +78,12 @@ const ChatBox: React.FC = () => {
       setNewMessage('');
       setIsTyping(true);
 
-      // Generate response before setTimeout to ensure it's in scope
       const response = generateResponse(userMessage);
       
-      // Now response is in scope for the delay calculation
       setTimeout(() => {
         setMessages(prev => [...prev, { text: response, sender: 'bot' }]);
         setIsTyping(false);
-      }, Math.min(1000 + response.length * 10, 3000)); // Dynamic delay based on response length
+      }, Math.min(1000 + response.length * 10, 3000));
     }
   };
 
@@ -130,7 +136,7 @@ const ChatBox: React.FC = () => {
                         : 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white'
                     }`}
                   >
-                    <p className="text-sm">{message.text}</p>
+                    <p className="text-sm whitespace-pre-line">{message.text}</p>
                   </div>
                 </motion.div>
               ))}

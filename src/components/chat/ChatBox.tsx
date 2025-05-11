@@ -5,7 +5,7 @@ import { MessageCircle, X, Send } from 'lucide-react';
 const ChatBox: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ text: string; sender: 'user' | 'bot' }[]>([
-    { text: "Hi! I'm Chetan's assistant. How can I help you today?", sender: 'bot' }
+    { text: "Hi! I'm Chetan's assistant. How can I help you today?\n\nYou can ask me about:\n1. About Me\n2. Projects\n3. Skills & Experience\n4. Education & Certifications\n5. Contact Information\n6. Achievements", sender: 'bot' }
   ]);
   const [newMessage, setNewMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -23,52 +23,52 @@ const ChatBox: React.FC = () => {
     const lowerMessage = userMessage.toLowerCase();
     
     // About Me
-    if (lowerMessage.includes('who are you') || lowerMessage.includes('about you')) {
-      return "I'm Chetan Agarwal, a Computer Science student at MAIT, Delhi. I'm passionate about software engineering and game development. I've worked on front-end projects and have a strong foundation in C++ and Java.";
+    if (lowerMessage.includes('who are you') || lowerMessage.includes('about you') || lowerMessage.includes('about me')) {
+      return "I'm Chetan Agarwal, a passionate Full Stack Developer with expertise in building scalable web applications and microservices. I specialize in:\n\n• Frontend Development (React, TypeScript)\n• Backend Development (Node.js, Express)\n• Cloud Technologies (AWS)\n• Game Development\n\nI love creating innovative solutions and contributing to open-source projects. Would you like to know more about my work or specific skills?";
     }
 
     // Current Work
     if (lowerMessage.includes('current') || lowerMessage.includes('working on')) {
-      return "I'm currently developing web applications using React and exploring game development. I'm also working on improving my portfolio with new projects and learning cloud technologies.";
+      return "I'm currently focused on several exciting areas:\n\n• Building scalable web applications using React and Node.js\n• Exploring cloud-native architectures with AWS\n• Contributing to open-source projects\n• Learning about AI and machine learning\n\nI'm also working on improving my portfolio with new projects. Would you like to know more about any of these areas?";
     }
 
     // Projects
-    if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
-      return "I've worked on several exciting projects including:\n• Apple Website Clone (React, TypeScript)\n• E-Commerce Dashboard (MERN Stack)\n• 2D Platformer Game (Java)\n\nWould you like to know more about any specific project?";
+    if (lowerMessage.includes('project') || lowerMessage.includes('portfolio')) {
+      return "Here are some of my notable projects:\n\n1. Apple Website Clone\n• Pixel-perfect recreation using React & TypeScript\n• Responsive design with Tailwind CSS\n• Advanced animations with Framer Motion\n\n2. E-Commerce Dashboard\n• Full-stack application with MERN stack\n• Real-time analytics and inventory management\n• Secure authentication and authorization\n\n3. 2D Platformer Game\n• Built with Java and LibGDX\n• Custom physics engine\n• Procedurally generated levels\n\nWould you like more details about any specific project?";
     }
 
-    // Skills
-    if (lowerMessage.includes('skill') || lowerMessage.includes('technology') || lowerMessage.includes('tech stack')) {
-      return "My technical skills include:\n• Frontend: React, TypeScript, Tailwind CSS\n• Backend: Node.js, Express, MongoDB\n• Languages: JavaScript, Java, C++\n• Tools: Git, Docker, AWS\n\nI'm always learning and expanding my skillset!";
+    // Skills & Technical Experience
+    if (lowerMessage.includes('skill') || lowerMessage.includes('tech') || lowerMessage.includes('stack')) {
+      return "My technical expertise includes:\n\nFrontend:\n• React, TypeScript, Next.js\n• Tailwind CSS, Framer Motion\n• Redux, Zustand\n\nBackend:\n• Node.js, Express\n• MongoDB, PostgreSQL\n• RESTful APIs, GraphQL\n\nDevOps & Cloud:\n• AWS Services\n• Docker, Kubernetes\n• CI/CD Pipelines\n\nWhat specific technology would you like to know more about?";
+    }
+
+    // Education & Certifications
+    if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('certification')) {
+      return "Education & Certifications:\n\nEducation:\n• Computer Science at MAIT, Delhi\n• Specialized in Software Engineering\n\nCertifications:\n• AWS Solutions Architect\n• React Certification from Meta\n• Advanced JavaScript (Coursera)\n• Data Structures & Algorithms\n\nI'm constantly learning and updating my skills. Would you like more details about any specific certification?";
     }
 
     // Contact Information
     if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
-      return "You can reach me through:\n• Email: contact@example.com\n• LinkedIn: linkedin.com/in/chetan\n• GitHub: github.com/chetan\n\nFeel free to connect!";
-    }
-
-    // Education
-    if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('college')) {
-      return "I'm pursuing Computer Science at MAIT, Delhi. I've completed several certifications in web development and cloud computing. I'm passionate about continuous learning and staying updated with the latest technologies.";
+      return "You can reach me through:\n\n• Email: contact@example.com\n• LinkedIn: linkedin.com/in/chetan\n• GitHub: github.com/chetan\n• Location: New Delhi, India\n\nI'm always open to interesting opportunities and collaborations. Feel free to connect!";
     }
 
     // Experience
     if (lowerMessage.includes('experience') || lowerMessage.includes('work experience')) {
-      return "I have experience in:\n• Full-stack web development\n• Game development\n• Open source contributions\n• Technical writing\n\nI'm always looking for new opportunities to grow and learn!";
-    }
-
-    // Certifications
-    if (lowerMessage.includes('certification') || lowerMessage.includes('certificate')) {
-      return "I've earned several certifications including:\n• React - The Complete Guide (Udemy)\n• Advanced JavaScript Concepts (Coursera)\n• Data Structures and Algorithms (Educative)\n• Web Development Bootcamp (Codeacademy)";
+      return "My professional experience includes:\n\n• Full Stack Development\n- Built and maintained large-scale web applications\n- Led development teams of 5+ members\n- Implemented microservices architecture\n\n• Open Source Contributions\n- Active contributor to React libraries\n- Created developer tools and utilities\n\n• Technical Leadership\n- Mentored junior developers\n- Code review and architecture planning\n\nWould you like more specific details about any area?";
     }
 
     // Achievements
     if (lowerMessage.includes('achievement') || lowerMessage.includes('award')) {
-      return "Some of my notable achievements include:\n• JEE Advanced Qualification\n• Hackathon Winner\n• Open Source Contributions\n• Technical Writing Recognition";
+      return "Some of my notable achievements:\n\n• Technical Leadership\n- Led a team of 8 developers\n- Delivered major e-commerce platform\n\n• AWS Certification\n- Achieved Solutions Architect Professional\n- Top scores in certification\n\n• Open Source Impact\n- Major contributions to React libraries\n- 50+ merged pull requests\n\n• Innovation Award\n- Developed AI-powered automation system\n- Company-wide recognition\n\nWould you like to know more about any of these achievements?";
+    }
+
+    // Help/Menu
+    if (lowerMessage.includes('help') || lowerMessage.includes('menu') || lowerMessage.includes('what can you')) {
+      return "I can help you with information about:\n\n1. About Me\n2. Projects & Portfolio\n3. Skills & Technical Experience\n4. Education & Certifications\n5. Contact Information\n6. Professional Experience\n7. Achievements\n\nWhat would you like to know more about?";
     }
 
     // Default response for other queries
-    return "Thanks for your interest! I can tell you about my projects, skills, experience, or how to get in touch. What would you like to know more about?";
+    return "I'd be happy to help you learn more about my:\n\n• Background and experience\n• Technical skills and projects\n• Education and certifications\n• Contact information\n\nPlease let me know what interests you, or type 'help' to see all available topics!";
   };
 
   const handleSend = () => {

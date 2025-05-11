@@ -21,8 +21,8 @@ export const skills: Skill[] = [
     category: 'backend',
   },
   {
-    name: 'AWS',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg',
+    name: 'Artificial Intelligence',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg',
     category: 'tool',
   },
   {
@@ -41,14 +41,14 @@ export const skills: Skill[] = [
     category: 'tool',
   },
   {
-    name: 'Kubernetes',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg',
-    category: 'tool',
+    name: 'Java',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+    category: 'language',
   },
   {
-    name: 'Redis',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
-    category: 'backend',
+    name: 'Machine Learning',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+    category: 'tool',
   },
   {
     name: 'GraphQL',

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Blogs from './pages/Blogs';
 import Contact from './pages/Contact';
+import ComingSoon from './pages/ComingSoon';
 
 function App() {
   return (
@@ -18,11 +19,10 @@ function App() {
             <Route path="projects" element={<Projects />} />
             <Route path="blogs" element={<Blogs />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="coming-soon" element={<ComingSoon />} />
           </Route>
         </Routes>
       </Router>
     </ThemeProvider>
   );
 }
-
-export default App;

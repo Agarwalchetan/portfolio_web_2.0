@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
                 }`
               }
             >
-              Coming Soon
+              ???
             </NavLink>
           </nav>
 
@@ -185,7 +185,7 @@ const Navbar: React.FC = () => {
               }
               onClick={() => setIsMenuOpen(false)}
             >
-              Coming Soon
+              ???
             </NavLink>
           </div>
         </motion.div>

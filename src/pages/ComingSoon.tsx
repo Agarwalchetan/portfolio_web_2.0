@@ -4,7 +4,7 @@ import { Timer, Rocket } from 'lucide-react';
 
 const ComingSoon: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
-    days: 30,
+    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
@@ -13,16 +13,20 @@ const ComingSoon: React.FC = () => {
   useEffect(() => {
     // Get or set the target date in localStorage
     let targetDate = localStorage.getItem('countdownTarget');
-    if (!targetDate) {
+    const now = new Date().getTime();
+
+    // If no target date exists or if the existing target date has passed
+    if (!targetDate || new Date(targetDate).getTime() <= now) {
       const newTargetDate = new Date();
       newTargetDate.setDate(newTargetDate.getDate() + 30);
-      targetDate = newTargetDate.toString();
+      targetDate = newTargetDate.toISOString();
       localStorage.setItem('countdownTarget', targetDate);
     }
 
     const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = new Date(targetDate).getTime() - now;
+      const currentTime = new Date().getTime();
+      const targetTime = new Date(targetDate).getTime();
+      const distance = targetTime - currentTime;
 
       if (distance > 0) {
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -32,6 +36,8 @@ const ComingSoon: React.FC = () => {
 
         setTimeLeft({ days, hours, minutes, seconds });
       } else {
+        // Reset the countdown when it reaches zero
+        localStorage.removeItem('countdownTarget');
         clearInterval(timer);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
@@ -75,23 +81,35 @@ const ComingSoon: React.FC = () => {
             We're working on something exciting! Stay tuned for updates.
           </p>
           
-          <div className="grid grid-cols-4 gap-4 mb-8">
-            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
-              <div className="text-3xl font-bold text-primary-500">{timeLeft.days}</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-primary-500">{timeLeft.days}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Days</div>
-            </div>
-            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
-              <div className="text-3xl font-bold text-primary-500">{timeLeft.hours}</div>
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-primary-500">{timeLeft.hours}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Hours</div>
-            </div>
-            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
-              <div className="text-3xl font-bold text-primary-500">{timeLeft.minutes}</div>
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-primary-500">{timeLeft.minutes}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Minutes</div>
-            </div>
-            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
-              <div className="text-3xl font-bold text-primary-500">{timeLeft.seconds}</div>
+            </motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-primary-500">{timeLeft.seconds}</div>
               <div className="text-sm text-slate-600 dark:text-slate-400">Seconds</div>
-            </div>
+            </motion.div>
           </div>
 
           <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-primary-500/10 to-accent-500/10 text-primary-600 dark:text-primary-400">

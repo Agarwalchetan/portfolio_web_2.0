@@ -11,21 +11,27 @@ const ComingSoon: React.FC = () => {
   });
 
   useEffect(() => {
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 30); // Set target date to 30 days from now
+    // Get or set the target date in localStorage
+    let targetDate = localStorage.getItem('countdownTarget');
+    if (!targetDate) {
+      const newTargetDate = new Date();
+      newTargetDate.setDate(newTargetDate.getDate() + 30);
+      targetDate = newTargetDate.toString();
+      localStorage.setItem('countdownTarget', targetDate);
+    }
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
+      const distance = new Date(targetDate).getTime() - now;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      setTimeLeft({ days, hours, minutes, seconds });
-
-      if (distance < 0) {
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
         clearInterval(timer);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }

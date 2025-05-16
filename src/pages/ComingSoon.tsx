@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Timer, Rocket } from 'lucide-react';
 
 const ComingSoon: React.FC = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 30,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 30); // Set target date to 30 days from now
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+
+      if (distance < 0) {
+        clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
@@ -38,6 +69,25 @@ const ComingSoon: React.FC = () => {
             We're working on something exciting! Stay tuned for updates.
           </p>
           
+          <div className="grid grid-cols-4 gap-4 mb-8">
+            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
+              <div className="text-3xl font-bold text-primary-500">{timeLeft.days}</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Days</div>
+            </div>
+            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
+              <div className="text-3xl font-bold text-primary-500">{timeLeft.hours}</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Hours</div>
+            </div>
+            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
+              <div className="text-3xl font-bold text-primary-500">{timeLeft.minutes}</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Minutes</div>
+            </div>
+            <div className="bg-gradient-to-r from-primary-500/10 to-accent-500/10 rounded-lg p-4">
+              <div className="text-3xl font-bold text-primary-500">{timeLeft.seconds}</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">Seconds</div>
+            </div>
+          </div>
+
           <div className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-primary-500/10 to-accent-500/10 text-primary-600 dark:text-primary-400">
             <Timer className="mr-2" size={20} />
             <span>Launch Countdown</span>

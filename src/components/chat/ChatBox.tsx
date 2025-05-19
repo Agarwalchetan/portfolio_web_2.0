@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageCircle, X, Send, ArrowLeft } from 'lucide-react';
 
 const ChatBox: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +9,7 @@ const ChatBox: React.FC = () => {
   ]);
   const [newMessage, setNewMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [showBackOption, setShowBackOption] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -20,55 +21,69 @@ const ChatBox: React.FC = () => {
   }, [messages]);
 
   const generateResponse = (userMessage: string): string => {
+    if (userMessage.toLowerCase() === 'back') {
+      return "Here are the main topics I can help you with:\n\n1. About Me\n2. Projects\n3. Skills & Experience\n4. Education & Certifications\n5. Contact Information\n6. Achievements\n\nWhat would you like to know more about?";
+    }
+
     const lowerMessage = userMessage.toLowerCase();
     
     // About Me
     if (lowerMessage.includes('who are you') || lowerMessage.includes('about you') || lowerMessage.includes('about me')) {
-      return "I'm Chetan Agarwal, a passionate Full Stack Developer with expertise in building scalable web applications and microservices. I specialize in:\n\n• Frontend Development (React, TypeScript)\n• Backend Development (Node.js, Express)\n• Cloud Technologies (AWS)\n• Game Development\n\nI love creating innovative solutions and contributing to open-source projects. Would you like to know more about my work or specific skills?";
+      setShowBackOption(true);
+      return "I'm Chetan Agarwal, a passionate Full Stack Developer with expertise in building scalable web applications and microservices. I specialize in:\n\n• Frontend Development (React, TypeScript)\n• Backend Development (Node.js, Express)\n• Cloud Technologies (AWS)\n• Game Development\n\nI love creating innovative solutions and contributing to open-source projects. Would you like to know more about my work or specific skills?\n\nType 'back' to return to the main menu.";
     }
 
     // Current Work
     if (lowerMessage.includes('current') || lowerMessage.includes('working on')) {
-      return "I'm currently focused on several exciting areas:\n\n• Building scalable web applications using React and Node.js\n• Exploring cloud-native architectures with AWS\n• Contributing to open-source projects\n• Learning about AI and machine learning\n\nI'm also working on improving my portfolio with new projects. Would you like to know more about any of these areas?";
+      setShowBackOption(true);
+      return "I'm currently focused on several exciting areas:\n\n• Building scalable web applications using React and Node.js\n• Exploring cloud-native architectures with AWS\n• Contributing to open-source projects\n• Learning about AI and machine learning\n\nI'm also working on improving my portfolio with new projects. Would you like to know more about any of these areas?\n\nType 'back' to return to the main menu.";
     }
 
     // Projects
     if (lowerMessage.includes('project') || lowerMessage.includes('portfolio')) {
-      return "Here are some of my notable projects:\n\n1. Apple Website Clone\n• Pixel-perfect recreation using React & TypeScript\n• Responsive design with Tailwind CSS\n• Advanced animations with Framer Motion\n\n2. E-Commerce Dashboard\n• Full-stack application with MERN stack\n• Real-time analytics and inventory management\n• Secure authentication and authorization\n\n3. 2D Platformer Game\n• Built with Java and LibGDX\n• Custom physics engine\n• Procedurally generated levels\n\nWould you like more details about any specific project?";
+      setShowBackOption(true);
+      return "Here are some of my notable projects:\n\n1. Apple Website Clone\n• Pixel-perfect recreation using React & TypeScript\n• Responsive design with Tailwind CSS\n• Advanced animations with Framer Motion\n\n2. E-Commerce Dashboard\n• Full-stack application with MERN stack\n• Real-time analytics and inventory management\n• Secure authentication and authorization\n\n3. 2D Platformer Game\n• Built with Java and LibGDX\n• Custom physics engine\n• Procedurally generated levels\n\nWould you like more details about any specific project?\n\nType 'back' to return to the main menu.";
     }
 
     // Skills & Technical Experience
     if (lowerMessage.includes('skill') || lowerMessage.includes('tech') || lowerMessage.includes('stack')) {
-      return "My technical expertise includes:\n\nFrontend:\n• React, TypeScript, Next.js\n• Tailwind CSS, Framer Motion\n• Redux, Zustand\n\nBackend:\n• Node.js, Express\n• MongoDB, PostgreSQL\n• RESTful APIs, GraphQL\n\nDevOps & Cloud:\n• AWS Services\n• Docker, Kubernetes\n• CI/CD Pipelines\n\nWhat specific technology would you like to know more about?";
+      setShowBackOption(true);
+      return "My technical expertise includes:\n\nFrontend:\n• React, TypeScript, Next.js\n• Tailwind CSS, Framer Motion\n• Redux, Zustand\n\nBackend:\n• Node.js, Express\n• MongoDB, PostgreSQL\n• RESTful APIs, GraphQL\n\nDevOps & Cloud:\n• AWS Services\n• Docker, Kubernetes\n• CI/CD Pipelines\n\nWhat specific technology would you like to know more about?\n\nType 'back' to return to the main menu.";
     }
 
     // Education & Certifications
     if (lowerMessage.includes('education') || lowerMessage.includes('study') || lowerMessage.includes('certification')) {
-      return "Education & Certifications:\n\nEducation:\n• Computer Science at MAIT, Delhi\n• Specialized in Software Engineering\n\nCertifications:\n• AWS Solutions Architect\n• React Certification from Meta\n• Advanced JavaScript (Coursera)\n• Data Structures & Algorithms\n\nI'm constantly learning and updating my skills. Would you like more details about any specific certification?";
+      setShowBackOption(true);
+      return "Education & Certifications:\n\nEducation:\n• Computer Science at MAIT, Delhi\n• Specialized in Software Engineering\n\nCertifications:\n• AWS Solutions Architect\n• React Certification from Meta\n• Advanced JavaScript (Coursera)\n• Data Structures & Algorithms\n\nI'm constantly learning and updating my skills. Would you like more details about any specific certification?\n\nType 'back' to return to the main menu.";
     }
 
     // Contact Information
     if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
-      return "You can reach me through:\n\n• Email: contact@example.com\n• LinkedIn: linkedin.com/in/chetan\n• GitHub: github.com/chetan\n• Location: New Delhi, India\n\nI'm always open to interesting opportunities and collaborations. Feel free to connect!";
+      setShowBackOption(true);
+      return "You can reach me through:\n\n• Email: contact@example.com\n• LinkedIn: linkedin.com/in/chetan\n• GitHub: github.com/chetan\n• Location: New Delhi, India\n\nI'm always open to interesting opportunities and collaborations. Feel free to connect!\n\nType 'back' to return to the main menu.";
     }
 
     // Experience
     if (lowerMessage.includes('experience') || lowerMessage.includes('work experience')) {
-      return "My professional experience includes:\n\n• Full Stack Development\n- Built and maintained large-scale web applications\n- Led development teams of 5+ members\n- Implemented microservices architecture\n\n• Open Source Contributions\n- Active contributor to React libraries\n- Created developer tools and utilities\n\n• Technical Leadership\n- Mentored junior developers\n- Code review and architecture planning\n\nWould you like more specific details about any area?";
+      setShowBackOption(true);
+      return "My professional experience includes:\n\n• Full Stack Development\n- Built and maintained large-scale web applications\n- Led development teams of 5+ members\n- Implemented microservices architecture\n\n• Open Source Contributions\n- Active contributor to React libraries\n- Created developer tools and utilities\n\n• Technical Leadership\n- Mentored junior developers\n- Code review and architecture planning\n\nWould you like more specific details about any area?\n\nType 'back' to return to the main menu.";
     }
 
     // Achievements
     if (lowerMessage.includes('achievement') || lowerMessage.includes('award')) {
-      return "Some of my notable achievements:\n\n• Technical Leadership\n- Led a team of 8 developers\n- Delivered major e-commerce platform\n\n• AWS Certification\n- Achieved Solutions Architect Professional\n- Top scores in certification\n\n• Open Source Impact\n- Major contributions to React libraries\n- 50+ merged pull requests\n\n• Innovation Award\n- Developed AI-powered automation system\n- Company-wide recognition\n\nWould you like to know more about any of these achievements?";
+      setShowBackOption(true);
+      return "Some of my notable achievements:\n\n• Technical Leadership\n- Led a team of 8 developers\n- Delivered major e-commerce platform\n\n• AWS Certification\n- Achieved Solutions Architect Professional\n- Top scores in certification\n\n• Open Source Impact\n- Major contributions to React libraries\n- 50+ merged pull requests\n\n• Innovation Award\n- Developed AI-powered automation system\n- Company-wide recognition\n\nWould you like to know more about any of these achievements?\n\nType 'back' to return to the main menu.";
     }
 
     // Help/Menu
     if (lowerMessage.includes('help') || lowerMessage.includes('menu') || lowerMessage.includes('what can you')) {
+      setShowBackOption(false);
       return "I can help you with information about:\n\n1. About Me\n2. Projects & Portfolio\n3. Skills & Technical Experience\n4. Education & Certifications\n5. Contact Information\n6. Professional Experience\n7. Achievements\n\nWhat would you like to know more about?";
     }
 
     // Default response for other queries
-    return "I'd be happy to help you learn more about my:\n\n• Background and experience\n• Technical skills and projects\n• Education and certifications\n• Contact information\n\nPlease let me know what interests you, or type 'help' to see all available topics!";
+    setShowBackOption(true);
+    return "I'd be happy to help you learn more about my:\n\n• Background and experience\n• Technical skills and projects\n• Education and certifications\n• Contact information\n\nPlease let me know what interests you, or type 'back' to see all available topics!";
   };
 
   const handleSend = () => {
@@ -94,6 +109,12 @@ const ChatBox: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    setNewMessage('back');
+    handleSend();
+    setShowBackOption(false);
+  };
+
   return (
     <>
       <motion.button
@@ -116,7 +137,15 @@ const ChatBox: React.FC = () => {
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
             className="fixed bottom-20 right-4 z-50 w-80 sm:w-96 bg-white dark:bg-slate-800 rounded-xl shadow-2xl overflow-hidden"
           >
-            <div className="p-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white">
+            <div className="p-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white flex items-center">
+              {showBackOption && (
+                <button
+                  onClick={handleBack}
+                  className="mr-2 p-1 rounded-full hover:bg-white/10 transition-colors duration-300"
+                >
+                  <ArrowLeft size={20} />
+                </button>
+              )}
               <h3 className="font-semibold">Chat with me</h3>
             </div>
 

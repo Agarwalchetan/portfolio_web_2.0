@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
           >
             <motion.a
               href="/resume.pdf"
-              download
+              download="Chetan_Agarwal_Resume.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-full bg-primary-500 text-white font-medium shadow-lg hover:shadow-xl transform transition-all duration-300"

@@ -20,10 +20,10 @@ const AboutMe: React.FC = () => {
                 Hello! I'm Chetan Agarwal, a passionate Full Stack Developer with expertise in building scalable web applications and microservices. I specialize in modern JavaScript frameworks and cloud technologies.
               </p>
               <p className="mb-4 leading-relaxed">
-                With over 5 years of experience in software development, I've worked on diverse projects ranging from e-commerce platforms to real-time analytics systems. I'm particularly skilled in React, Node.js, and AWS, with a strong focus on writing clean, maintainable code.
+                With proficiency in Java and AI, and a problem-solving mindset sharpened by qualifying JEE Mains and Advanced, I aim to blend creativity with technology to craft impactful, user-centric solutions.
               </p>
               <p className="leading-relaxed">
-                Beyond coding, I'm an active contributor to open-source projects and enjoy mentoring junior developers. I'm constantly learning new technologies and best practices to stay at the forefront of web development. Currently, I'm exploring cloud-native architectures and serverless computing.
+                Beyond coding, I'm a quick learner and collaborative team player, I am dedicated to continuous growth in the evolving tech landscape.
               </p>
             </div>
           </motion.div>

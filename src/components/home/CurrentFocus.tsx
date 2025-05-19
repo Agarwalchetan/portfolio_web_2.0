@@ -16,8 +16,8 @@ const activities = [
     category: 'doing',
   },
   {
-    title: 'Database Design',
-    description: 'Optimizing database schemas and implementing efficient data access patterns for high-performance applications.',
+    title: 'Entrepreneurship World',
+    description: 'Exploring the process of building innovative solutions, understanding market needs, developing business models, and leading teams to turn ideas into impactful ventures.',
     icon: <Database size={32} />,
     category: 'exploring',
   },

@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12"
           >
-            Frontend Developer | Game Developer | Problem Solver
+            Full Stack Developer | Game Developer | Problem Solver
           </motion.p>
 
           <motion.div 

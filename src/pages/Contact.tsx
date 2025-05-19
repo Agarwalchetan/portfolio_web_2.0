@@ -13,7 +13,7 @@ const contactInfo = [
   {
     icon: <Phone size={24} />,
     title: 'Phone',
-    details: '+91 98765 43210',
+    details: '+91 7424991027',
   },
   {
     icon: <Mail size={24} />,

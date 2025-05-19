@@ -4,23 +4,23 @@ import { Award, Users, Code, Trophy } from 'lucide-react';
 
 const recognitions = [
   {
-    title: 'Tech Lead',
-    description: 'Led a team of 8 developers in delivering a major e-commerce platform with 1M+ monthly active users.',
+    title: 'Tech Lead Potential',
+    description: 'Successfully led the development of NyaySetu, an AI legal platform showcasing innovation, leadership, and real-world',
     icon: <Users size={32} />,
   },
   {
-    title: 'AWS Certified',
-    description: 'Achieved AWS Solutions Architect Professional certification with top scores.',
+    title: 'Entrepreneurial Leadership',
+    description: 'Campus Ambassador at eDC IIT Delhi and BECon’25, promoting startup culture through events and outreach competitions.',
     icon: <Trophy size={32} />,
   },
   {
-    title: 'Open Source Impact',
-    description: 'Major contributions to popular React libraries with 50+ merged pull requests.',
+    title: 'Tech for Social Good',
+    description: 'Built the Neuro Impact, LifeFlow, and FoodShare to create social impact using accessibility features and real-time data.',
     icon: <Code size={32} />,
   },
   {
-    title: 'Innovation Award',
-    description: 'Received company-wide recognition for developing an AI-powered customer service automation system.',
+    title: 'Full Stack + AI Expertise',
+    description: 'Hands-on with React, Node.js, MongoDB, and AI tools like OpenAI API and LangChain to build smart, scalable apps.',
     icon: <Award size={32} />,
   },
 ];

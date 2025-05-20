@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               <Twitter size={20} />
             </a> */}
             <a
-              href="mailto:agarwalchetan1302@gmail.com"
+              href="mailto:agar.chetan1@gmail.com"
               className="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-400 transition-colors duration-300"
               aria-label="Email"
             >

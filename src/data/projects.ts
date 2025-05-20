@@ -15,7 +15,7 @@ export const projects: Project[] = [
     id: 1,
     title: 'Apple Website Clone',
     description: 'A pixel-perfect clone of the Apple website homepage, showcasing attention to detail and frontend development skills.',
-    image: 'https://images.pexels.com/photos/1294886/pexels-photo-1294886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: '/images/Projects/lifeflow.png',
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     demoUrl: 'https://example.com',
     githubUrl: 'https://github.com',

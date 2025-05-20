@@ -67,7 +67,7 @@ const ChatBox: React.FC = () => {
     // Contact Information
     if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('reach')) {
       setShowBackOption(true);
-      return "You can reach me through:\n\n• Email: contact@example.com\n• LinkedIn: linkedin.com/in/chetan\n• GitHub: github.com/chetan\n• Location: New Delhi, India\n\nI'm always open to interesting opportunities and collaborations. Feel free to connect!\n\nType 'back' to return to the main menu.";
+      return "You can reach me through:\n\n• Email: agarwalchetan1302@gmail.com\n• LinkedIn: linkedin.com/in/agarwalchetan10/\n• GitHub: github.com/Agarwalchetan\n• Location: New Delhi, India\n\nI'm always open to interesting opportunities and collaborations. Feel free to connect!\n\nType 'back' to return to the main menu.";
     }
 
     // Experience
@@ -79,7 +79,7 @@ const ChatBox: React.FC = () => {
     // Achievements
     if (lowerMessage.includes('achievement') || lowerMessage.includes('award')) {
       setShowBackOption(true);
-      return "Some of my notable achievements:\n\n• Technical Leadership\n- Led a team of 8 developers\n- Delivered major e-commerce platform\n\n• AWS Certification\n- Achieved Solutions Architect Professional\n- Top scores in certification\n\n• Open Source Impact\n- Major contributions to React libraries\n- 50+ merged pull requests\n\n• Innovation Award\n- Developed AI-powered automation system\n- Company-wide recognition\n\nWould you like to know more about any of these achievements?\n\nType 'back' to return to the main menu.";
+      return "Some of my notable achievements:\n\n• Technical Leadership\n- Led a team of developers\n- Delivered major e-commerce platform\n\n• AWS Certification\n- Achieved Solutions Architect Professional\n- Top scores in certification\n\n• Open Source Impact\n- Major contributions to React libraries\n- 50+ merged pull requests\n\n• Innovation Award\n- Developed AI-powered automation system\n- Company-wide recognition\n\nWould you like to know more about any of these achievements?\n\nType 'back' to return to the main menu.";
     }
 
     // Help/Menu

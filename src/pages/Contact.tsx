@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Mail, Github } from 'lucide-react';
 import ContactForm from '../components/contact/ContactForm';
 import GoogleMap from '../components/contact/GoogleMap';
 
@@ -11,14 +11,14 @@ const contactInfo = [
     details: 'New Delhi, India',
   },
   {
-    icon: <Phone size={24} />,
-    title: 'Phone',
-    details: '+91 7424991027',
+    icon: <Github size={24} />,
+    title: 'Github',
+    details: 'AgarwalChetan',
   },
   {
     icon: <Mail size={24} />,
     title: 'Email',
-    details: 'contact@example.com',
+    details: 'agar.chetan1@gmail.com',
   },
 ];
 

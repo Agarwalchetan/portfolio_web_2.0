@@ -15,7 +15,7 @@ const Projects: React.FC = () => {
   const tabs = [
     { id: 'all', label: 'All Projects' },
     { id: 'frontend', label: 'Frontend' },
-    { id: 'backend', label: 'Backend' },
+    { id: 'AI', label: 'AI' },
     { id: 'fullstack', label: 'Full Stack' },
     { id: 'game', label: 'Game Dev' },
   ];

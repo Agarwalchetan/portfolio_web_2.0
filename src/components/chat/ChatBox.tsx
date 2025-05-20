@@ -27,6 +27,13 @@ const ChatBox: React.FC = () => {
 
     const lowerMessage = userMessage.toLowerCase();
     
+    // Resume request
+    if (lowerMessage.includes('resume') || lowerMessage.includes('cv')) {
+      setShowBackOption(true);
+      window.open('/resume.pdf', '_blank');
+      return "I've opened my resume for you to download. Let me know if you need anything else!\n\nType 'back' to return to the main menu.";
+    }
+
     // About Me
     if (lowerMessage.includes('who are you') || lowerMessage.includes('about you') || lowerMessage.includes('about me')) {
       setShowBackOption(true);

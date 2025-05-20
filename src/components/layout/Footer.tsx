@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex space-x-4">
             <a
-              href="https://github.com"
+              href="https://github.com/Agarwalchetan"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-400 transition-colors duration-300"
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/agarwalchetan10/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-400 transition-colors duration-300"
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             >
               <Linkedin size={20} />
             </a>
-            <a
+            {/* <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -38,9 +38,9 @@ const Footer: React.FC = () => {
               aria-label="Twitter"
             >
               <Twitter size={20} />
-            </a>
+            </a> */}
             <a
-              href="mailto:contact@example.com"
+              href="mailto:agarwalchetan1302@gmail.com"
               className="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-400 transition-colors duration-300"
               aria-label="Email"
             >

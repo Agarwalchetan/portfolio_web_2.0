@@ -92,7 +92,7 @@ $ npm run preview
 
 ## 📬 Contact
 
-For inquiries or collaborations, reach out via the [Contact Page](https://agarwalchetan.netlify.app/contact).
+For inquiries or collaborations, reach out via the [Contact Page](https://agarwalchetan.netlify.app/).
 
 ---
 

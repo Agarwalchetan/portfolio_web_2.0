@@ -17,7 +17,7 @@ export const projects: Project[] = [
     description: 'AI-powered legal assistant platform connecting clients and lawyers for smarter, faster legal consultations.',
     image: '/images/Projects/NyaySetu.png',
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    demoUrl: 'https://example.com',
+    demoUrl: 'https://nyaysetu-1.onrender.com/',
     githubUrl: 'https://github.com/Agarwalchetan/NyaySetu',
     featured: true,
     category: 'fullstack',

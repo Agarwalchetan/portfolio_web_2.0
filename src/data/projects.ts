@@ -39,7 +39,7 @@ export const projects: Project[] = [
     description: 'Initiative fostering inclusive communities and support systems for neurodivergent individuals.',
     image: '/images/Projects/NeuroImpact.png',
     techStack: ['Java','AI', 'Node.js', 'MongoDB', 'Express', 'Box2D'],
-    demoUrl: 'https://frolicking-meerkat-5193fd.netlify.app/',
+    demoUrl: 'https://neuroimpact.netlify.app',
     githubUrl: 'https://github.com/Agarwalchetan/Neuro-diversity',
     featured: true,
     category: 'AI',
